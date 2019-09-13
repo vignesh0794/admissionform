@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>admission form</title>
+
+</head>
+<form onsubmit="postData(); return false;">
+<label>Name</label>
+<input type="text" name="name" id="name" required><br>
+<label>email</label>
+<input type="email" name="email" id="email"  required><br>
+<label>Gender</label>
+<input type="text" name="gender" id="gender" required><br>
+<label>Phone number</label>
+<input type="tel" name="phone number" id='phoneNumber' required><br>
+<label>Country</label>
+<select name="country" id="country" required><br>
+    <option value="India">India</option>
+    <option value="Pakistan">Pakistan</option>
+    <option value="Srilanka">Srilanka</option>
+    <option value="America">America</option>
+  </select><br>
+  <label>State</label>
+  <select name="state" id="state" required>
+    <option value="India">TN</option>
+    <option value="Pakistan">Karachi</option>
+    <option value="Srilanka">Colombo</option>
+    <option value="America">Washington</option>
+  </select><br>
+  <label>City</label>
+  <select name="city" id="city" required>
+    <option value="chennai">Chennai</option>
+    <option value="coimbatore">Coimbatore</option>
+    <option value="trichy">trichy</option>
+    <option value="thirunelveli">America</option>
+  </select><br>
+  <label>Percentage</label>
+<input type="number" name="percentage" id="percentage" required><br>
+<label>Physics Mark</label>
+<input type="text" name="physics mark" id="physicsMark" required><br>
+<label>Chemistry Mark</label>
+<input type="text" name="chemistry mark"id="chemistryMark" required><br>
+<label>Maths Mark</label>
+<input type="text" name="maths mark" id="mathsMark" required><br>
+<label>Computer science Mark</label>
+<input type="text" name="computer science mark" id="computerSciencemark" required><br>
+<input type="submit" value="Submit"><br>
+</form>
+<script>
+  function postData()
+  {
+    var data={
+      name:document.getElementById('name').value,
+      email:document.getElementById('email').value,
+      gender:document.getElementById('gender').value,
+      phoneNumber:document.getElementById('phoneNumber').value,
+      country:document.getElementById('country').value,
+      state:document.getElementById('state').value,
+      city:document.getElementById('city').value,
+      percentage:document.getElementById('percentage').value,
+      physicsMark:document.getElementById('physicsMark').value,
+      mathsMark:document.getElementById('mathsMark').value,
+      chemistryMark:document.getElementById('chemistryMark').value,
+      computerSciencemark:document.getElementById('computerSciencemark').value
+    }
+    var xhttp= new XMLHttpRequest();
+    xhttp.onreadystatechange=function(){
+      if(this.readyState==4&&this.status==200)
+      alert('success')
+      
+    }
+    xhttp.open("POST","http://localhost:3000/studentdata",true);
+    xhttp.setRequestHeader("Content-Type","application/json;charset=UTF-8")
+    xhttp.send(JSON.stringify(data))
+    
+  }
+</script>
+</html>
